@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <span id="title">Scraper</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/api/commented">Commented Articles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/api/delete">Delete All Articles</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Get Articles From The New York Times!</h1>
+        <a class="btn btn-primary" id="mainButton" href="/scrape">Start!</a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <ul>
+        {{#each results}}
+        <li>
+            <div class="card">
+                <h5 class="card-header">{{this.title}}</h5>
+                <div class="card-body">
+                    <p>{{this.summary}}</p>
+                    <a href="https://www.nytimes.com{{this.link}}" target="_blank">Check it out!</a>
+                    <br>
+                    <textarea class="form-control comment" data-articleId="{{this.id}}" placeholder="Write A Comment" rows="1"></textarea>
+                    <br>
+                    <a href="/" class="btn btn-primary postComment">Comment Article</a>
+                </div>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>
